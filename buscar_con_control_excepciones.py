@@ -6,7 +6,7 @@ carpeta_busqueda = "/mnt/local/datos/Contras/Collection 1"
 
 def abrir_gz(ruta_completa, patron):
     try:
-        with gzip.open(ruta_completa, "rt") as archivo_comprimido:
+        with gzip.open(ruta_completa, "rt", encoding="latin1") as archivo_comprimido:
             for num_linea, linea in enumerate(archivo_comprimido, start=1):
                 if re.search(re.escape(patron), linea):  # Escape patron input
                     print(f"Coincidencia encontrada en {ruta_completa}, línea {num_linea}: {linea.strip()}")
@@ -25,9 +25,9 @@ def buscar_en_archivos_comprimidos(carpeta, patron):
         for archivo in os.listdir(carpeta):
             if archivo.endswith(".gz"):                
                 ruta_completa = os.path.join(carpeta, archivo)
-                abrir_gz(ruta_completa. patron)
+                abrir_gz(ruta_completa, patron)
             else:
-                with open(os.path.join(carpeta, archivo), "r") as archivo_normal:
+                with open(os.path.join(carpeta, archivo), "r", encoding="latin1") as archivo_normal:
                     for num_linea, linea in enumerate(archivo_normal, start=1):
                         if re.search(re.escape(patron), linea):  # Escape patron input
                             print(f"Coincidencia encontrada en {ruta_completa}, línea {num_linea}: {linea.strip()}")
