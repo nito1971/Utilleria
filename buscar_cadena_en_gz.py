@@ -2,6 +2,8 @@ import gzip
 import os
 import re
 
+
+
 def buscar_en_archivos_comprimidos(carpeta, patron):
     """
     Busca el patrón en todos los archivos comprimidos (.gz) dentro de la carpeta especificada.
